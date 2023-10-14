@@ -142,15 +142,17 @@
 
     <!-- Tela de Login -->
     <div id="loginScreen" class="screen active">
-        <div class="login-form">
-            <h2>Login</h2>
-            <label>Email: <input type="email"></label>
-            <label>Password: <input type="password"></label>
-            <button onclick="login('dropprint')">Dropprint</button>
-            <button onclick="login('lojista')">Lojista</button>
-            <button onclick="navigateTo('leadRegistrationScreen')">Quero me cadastrar</button>
-        </div>
+    <div class="login-form">
+        <h2>Login</h2>
+        <label>Email: <input type="email"></label>
+        <label>Password: <input type="password"></label>
+        <label>Link da Imagem de Fundo: <input type="text" id="backgroundImageUrl"></label>
+        <button onclick="login('dropprint')">Dropprint</button>
+        <button onclick="login('lojista')">Lojista</button>
+        <button onclick="navigateTo('leadRegistrationScreen')">Quero me cadastrar</button>
+        <button onclick="setBackgroundImage()">Definir Imagem de Fundo</button>
     </div>
+</div>
 
     <!-- Tela de Cadastro de Lead -->
     <div id="leadRegistrationScreen" class="screen">
@@ -491,6 +493,7 @@
 </div>
 
 <div class="footer-buttons">
+    <button onclick="showLoginScreen()">Tela de Login</button>
     <button onclick="login('dropprint')">Dropprint</button>
     <button onclick="login('lojista')">Lojista</button>
 </div>
@@ -520,6 +523,20 @@
             navigateTo('lojistaCatalogScreen');
         }
     }
+     function showLoginScreen() {
+        // Esconde todas as telas
+        const screens = document.querySelectorAll('.screen');
+        screens.forEach(screen => screen.classList.remove('active'));
+
+        // Mostra a tela de login
+        document.getElementById('loginScreen').classList.add('active');
+    }
+
+    function setBackgroundImage() {
+        const imageUrl = document.getElementById('backgroundImageUrl').value;
+        document.body.style.backgroundImage = `url(${imageUrl})`;
+    }
+</script>
 </script>
 
 </body>
