@@ -19,7 +19,7 @@
         }
 
         .menu {
-            width: 250px;
+            width: 300px;
             background-color: #333;
             color: #fff;
             padding: 20px 0;
@@ -52,12 +52,12 @@
 
         .login-form, .lead-form, .product-list, .order-list, .subscription-details, .user-data {
             width: 80%;
-            max-width: 600px;
+            max-width: 700px;
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
+            margin: 200px auto;
         }
 
         .login-form label, .lead-form label {
@@ -66,7 +66,7 @@
         }
 
         .login-form input, .lead-form input {
-            width: 100%;
+            width: 97%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -146,11 +146,9 @@
         <h2>Login</h2>
         <label>Email: <input type="email"></label>
         <label>Password: <input type="password"></label>
-        <label>Link da Imagem de Fundo: <input type="text" id="backgroundImageUrl"></label>
         <button onclick="login('dropprint')">Dropprint</button>
         <button onclick="login('lojista')">Lojista</button>
         <button onclick="navigateTo('leadRegistrationScreen')">Quero me cadastrar</button>
-        <button onclick="setBackgroundImage()">Definir Imagem de Fundo</button>
     </div>
 </div>
 
@@ -493,7 +491,7 @@
 </div>
 
 <div class="footer-buttons">
-    <button onclick="showLoginScreen()">Tela de Login</button>
+    <button onclick="showLoginScreen()">Login</button>
     <button onclick="login('dropprint')">Dropprint</button>
     <button onclick="login('lojista')">Lojista</button>
 </div>
