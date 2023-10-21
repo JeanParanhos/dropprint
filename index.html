@@ -47,17 +47,28 @@
         }
 
         .screen.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .login-form, .lead-form, .product-list, .order-list, .subscription-details, .user-data {
+        .login-form, .lead-form, .product-list, .order-list, .subscription-details, .user-data, .integration-tools {
             width: 80%;
             max-width: 700px;
             background-color: #fff;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 200px auto;
+            margin: 20px auto;
+        }
+
+        .image-container {
+            width: 860px;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            margin-top: 20px;
+            border: 1px solid #ddd;
         }
 
         .login-form label, .lead-form label {
@@ -81,6 +92,10 @@
             color: #fff;
             cursor: pointer;
             margin-right: 10px;
+        }
+
+        button.green-button {
+            background-color: green;
         }
 
         button:hover {
@@ -114,20 +129,11 @@
         tr:hover {
             background-color: #f5f5f5;
         }
-            <style>
-        /* CSS existente */
 
         #lojistaCatalogScreen {
-            /* Adicionando a imagem de fundo */
             background-image: url('https://i.postimg.cc/gcsCd3mx/Sem-t-tulo.png');
-
-            /* Certificando-se de que o fundo cobre toda a área, você pode ajustar conforme necessário */
             background-size: cover;
-
-            /* Centralizando a imagem no div */
             background-position: center;
-
-            /* Isso evita a repetição da imagem se ela for menor que o div */
             background-repeat: no-repeat;
         }
     </style>
@@ -142,31 +148,27 @@
             <a href="#" onclick="navigateTo('productCatalogScreen')">Produtos Catálogo</a>
             <a href="#" onclick="navigateTo('productionOrdersScreen')">Pedidos de produção</a>
             <a href="#" onclick="navigateTo('lojistaSubscriptionManagementScreen')">Lojas</a>
-           <!-- <a href="#" onclick="navigateTo('leadsListScreen')">Lista de Leads</a> -->
         </div>
 
         <!-- Menu para Lojista -->
         <div id="menuLojista">
             <a href="#" onclick="navigateTo('lojistaCatalogScreen')">Meus Produtos</a>
             <a href="#" onclick="navigateTo('savedProductsScreen')">Integrações</a>
-            <!-- <a href="#" onclick="navigateTo('productsOnSaleScreen')">Produtos à Venda (API)</a> -->
             <a href="#" onclick="navigateTo('lojistaOrdersScreen')">Meus Pedidos</a>
-             <!-- <a href="#" onclick="navigateTo('lojistaSubscriptionScreen')">Minha Assinatura</a> -->
-            <a href="#" onclick="navigateTo('lojistaDataScreen')">Meu Perfil</a>
         </div>
     </div>
 
     <!-- Tela de Login -->
     <div id="loginScreen" class="screen active">
-    <div class="login-form">
-        <h2>Login</h2>
-        <label>Email: <input type="email"></label>
-        <label>Password: <input type="password"></label>
-        <button onclick="login('dropprint')">Dropprint</button>
-        <button onclick="login('lojista')">Lojista</button>
-        <button onclick="navigateTo('leadRegistrationScreen')">Quero me cadastrar</button>
+        <div class="login-form">
+            <h2>Login</h2>
+            <label>Email: <input type="email"></label>
+            <label>Password: <input type="password"></label>
+            <button onclick="login('dropprint')">Dropprint</button>
+            <button onclick="login('lojista')">Lojista</button>
+            <button onclick="navigateTo('leadRegistrationScreen')">Quero me cadastrar</button>
+        </div>
     </div>
-</div>
 
     <!-- Tela de Cadastro de Lead -->
     <div id="leadRegistrationScreen" class="screen">
@@ -208,6 +210,7 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="image-container" style="background-image: url('https://i.postimg.cc/SsBYd46w/Sem-t-tulo.png');"></div>
             <button>Criar Novo Produto</button>
         </div>
     </div>
@@ -241,6 +244,7 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="image-container" style="background-image: url('https://i.postimg.cc/SsBYd46w/Sem-t-tulo.png');"></div>
         </div>
     </div>
 
@@ -336,7 +340,7 @@
                 <tr>
                     <td>Lead B</td>
                     <td>leadB@email.com</td>
-                    <td>(11) 9876-5432</td>
+                    <td>(21) 8765-4321</td>
                     <td><button>Converter em Assinatura</button></td>
                 </tr>
                 </tbody>
@@ -344,106 +348,7 @@
         </div>
     </div>
 
-    <!-- Tela de Catálogo de Produtos (Lojista) -->
-    <div id="lojistaCatalogScreen" class="screen">
-        <div class="product-list">
-            <h2>Catálogo de Produtos</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Exemplo de produtos -->
-                <tr>
-                    <td>Produto A</td>
-                    <td>Descrição do Produto A</td>
-                    <td>R$ 100,00</td>
-                    <td><button>Salvar para minha Loja</button></td>
-                </tr>
-                <tr>
-                    <td>Produto B</td>
-                    <td>Descrição do Produto B</td>
-                    <td>R$ 150,00</td>
-                    <td><button>Salvar para minha Loja</button></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Tela de Produtos Salvos (Lojista) -->
-    <div id="savedProductsScreen" class="screen">
-        <div class="product-list">
-            <h2>Produtos Salvos</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Exemplo de produtos -->
-                <tr>
-                    <td>Produto A</td>
-                    <td>Descrição do Produto A</td>
-                    <td>R$ 100,00</td>
-                    <td><button>Editar</button> <button>Enviar para Venda (API)</button></td>
-                </tr>
-                <tr>
-                    <td>Produto B</td>
-                    <td>Descrição do Produto B</td>
-                    <td>R$ 150,00</td>
-                    <td><button>Editar</button> <button>Enviar para Venda (API)</button></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Tela de Produtos à Venda (API) (Lojista) -->
-    <div id="productsOnSaleScreen" class="screen">
-        <div class="product-list">
-            <h2>Produtos à Venda (API)</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Exemplo de produtos -->
-                <tr>
-                    <td>Produto A</td>
-                    <td>Descrição do Produto A</td>
-                    <td>R$ 100,00</td>
-                    <td>Ativo</td>
-                    <td><button>Editar</button> <button>Inativar</button> <button>Remover da Loja</button></td>
-                </tr>
-                <tr>
-                    <td>Produto B</td>
-                    <td>Descrição do Produto B</td>
-                    <td>R$ 150,00</td>
-                    <td>Inativo</td>
-                    <td><button>Editar</button> <button>Ativar</button> <button>Remover da Loja</button></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Tela de Meus Pedidos (Lojista) -->
+    <!-- Tela de Pedidos (Lojista) -->
     <div id="lojistaOrdersScreen" class="screen">
         <div class="order-list">
             <h2>Meus Pedidos</h2>
@@ -453,8 +358,8 @@
                     <th>Nome do Cliente</th>
                     <th>Produto</th>
                     <th>Valor</th>
-                    <th>Status (Plataforma)</th>
-                    <th>Status (Nuvem Shop)</th>
+                    <th>Preço de Custo</th>
+                    <th>Status</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -464,92 +369,106 @@
                     <td>Cliente A</td>
                     <td>Produto A</td>
                     <td>R$ 100,00</td>
-                    <td>Em Produção</td>
-                    <td>Pago</td>
-                    <td><button>Ver Detalhes</button> <button>Pagar pelo Pedido</button></td>
+                    <td>R$ 70,00</td>
+                    <td>Aguardando Pagamento</td>
+                    <td><button class="green-button">Pagar pelo pedido</button> <span>Pag Seguro*</span></td>
                 </tr>
                 <tr>
                     <td>Cliente B</td>
                     <td>Produto B</td>
                     <td>R$ 150,00</td>
-                    <td>Finalizado</td>
-                    <td>Pendente</td>
-                    <td><button>Ver Detalhes</button> <button>Pagar pelo Pedido</button></td>
+                    <td>R$ 95,00</td>
+                    <td>Pagamento Confirmado</td>
+                    <td><button class="green-button">Pagar pelo pedido</button> <span>Pag Seguro*</span></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Tela de Minha Assinatura (Lojista) -->
-    <div id="lojistaSubscriptionScreen" class="screen">
-        <div class="subscription-details">
-            <h2>Minha Assinatura</h2>
-            <p>Valor da Assinatura: R$ 199,00</p>
-            <p>Data do próximo pagamento: 10/10/2023</p>
-            <p>Data de acesso liberado até: 10/10/2023</p>
+    <!-- Tela de Produtos Salvos (Lojista) -->
+    <div id="savedProductsScreen" class="screen">
+        <div class="integration-tools">
+            <h2>Integrações</h2>
+            <button>Integrar com Nuvem Shop</button>
+            <button>Login</button>
+            <label>Api Key: <input type="text"></label>
         </div>
     </div>
 
-    <!-- Tela de Meus Dados (Lojista) -->
-    <div id="lojistaDataScreen" class="screen">
+    <!-- Tela de Catálogo de Produtos (Lojista) -->
+    <div id="lojistaCatalogScreen" class="screen">
+    </div>
+
+    <!-- Tela de Dados do Usuário (Lojista) -->
+    <div id="userDataScreen" class="screen">
         <div class="user-data">
             <h2>Meus Dados</h2>
             <label>Nome: <input type="text"></label>
-            <label>Email: <input type="email"></label>
+            <label>Email: <input type of="email"></label>
             <label>Telefone: <input type="text"></label>
-            <label>Endereço: <input type="text"></label>
-            <label>Documento: <input type="text"></label>
-            <label>Informações Bancárias: <input type="text"></label>
-            <button>Salvar</button>
+            <button>Salvar Alterações</button>
         </div>
+    </div>
+
+    <!-- Botões de Rodapé -->
+    <div class="footer-buttons">
+        <button onclick="logout()">Login</button>
+	<button onclick="login('dropprint')">Dropprint</button>
+        <button onclick="login('lojista')">Lojista</button>
     </div>
 </div>
 
-<div class="footer-buttons">
-    <button onclick="showLoginScreen()">Login</button>
-    <button onclick="login('dropprint')">Dropprint</button>
-    <button onclick="login('lojista')">Lojista</button>
-</div>
-
 <script>
-    function navigateTo(screenId) {
-        // Esconde todas as telas
-        const screens = document.querySelectorAll('.screen');
-        screens.forEach(screen => screen.classList.remove('active'));
+    // Variáveis globais para controle da interface
+    var currentRole = '';  // 'dropprint' ou 'lojista'
+    var currentScreen = 'loginScreen';
 
-        // Mostra a tela selecionada
+    // Navegação entre telas
+    function navigateTo(screenId) {
+        // Esconde a tela atual
+        document.getElementById(currentScreen).classList.remove('active');
+
+        // Mostra a nova tela
         document.getElementById(screenId).classList.add('active');
+
+        // Atualiza a tela atual
+        currentScreen = screenId;
     }
 
+    // Função de login
     function login(role) {
+        currentRole = role;
+
         // Esconde todos os menus
-        const menus = document.querySelectorAll('.menu > div');
-        menus.forEach(menu => menu.style.display = 'none');
+        document.getElementById('menuDropprint').style.display = 'none';
+        document.getElementById('menuLojista').style.display = 'none';
 
-        // Mostra o menu selecionado
-        document.getElementById('menu' + role.charAt(0).toUpperCase() + role.slice(1)).style.display = 'block';
-
-        // Navega para a primeira tela do menu selecionado
+        // Mostra o menu correspondente ao papel do usuário
         if (role === 'dropprint') {
-            navigateTo('productRegistrationScreen');
+            document.getElementById('menuDropprint').style.display = 'block';
+            navigateTo('productRegistrationScreen');  // Primeira tela para Dropprint
         } else if (role === 'lojista') {
-            navigateTo('lojistaCatalogScreen');
+            document.getElementById('menuLojista').style.display = 'block';
+            navigateTo('lojistaCatalogScreen');  // Primeira tela para Lojista
         }
     }
-     function showLoginScreen() {
-        // Esconde todas as telas
-        const screens = document.querySelectorAll('.screen');
-        screens.forEach(screen => screen.classList.remove('active'));
 
-        // Mostra a tela de login
-        document.getElementById('loginScreen').classList.add('active');
+    // Função de logout
+    function logout() {
+        currentRole = '';
+        navigateTo('loginScreen');
     }
 
-    function setBackgroundImage() {
-        const imageUrl = document.getElementById('backgroundImageUrl').value;
-        document.body.style.backgroundImage = `url(${imageUrl})`;
+    // Inicializa a aplicação
+    function initApp() {
+        // Esconde os menus no início
+        document.getElementById('menuDropprint').style.display = 'none';
+        document.getElementById('menuLojista').style.display = 'none';
     }
+
+    // Inicializa a aplicação ao carregar a página
+    window.onload = initApp;
 </script>
 
 </body>
